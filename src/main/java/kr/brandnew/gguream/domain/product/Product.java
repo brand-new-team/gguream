@@ -5,24 +5,38 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import java.util.List;
 
 @Entity
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Product {
 
     @Id
+    @Column(name = "product_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-
     private String code;
 
     @ElementCollection
-    @CollectionTable(name = "product_category", joinColumns = @JoinColumn(name = "category_id"))
+    @CollectionTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id"))
     private List<Long> categoryIds;
+
+    @ElementCollection
+    @CollectionTable(name = "product_image", joinColumns = @JoinColumn(name = "product_id"))
+    private List<String> urls;
 }
