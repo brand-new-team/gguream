@@ -1,5 +1,6 @@
 package kr.brandnew.gguream.domain.product;
 
+import kr.brandnew.gguream.domain.common.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,8 +22,7 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Product {
+public class Product extends BaseTimeEntity {
 
     @Id
     @Column(name = "product_id")

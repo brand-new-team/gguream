@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum ShoesSize {
+public enum ProductSize {
 
     S_220(220), S_225(225), S_230(230), S_235(235),
     S_240(240), S_245(245), S_250(250), S_255(255),
