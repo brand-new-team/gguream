@@ -1,11 +1,10 @@
-package kr.brandnew.gguream.domain.product;
+package kr.brandnew.gguream.domain.order;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import kr.brandnew.gguream.domain.common.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -16,21 +15,18 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Sell extends BaseTimeEntity {
+public class Order extends BaseTimeEntity {
 
-    @Id
-    @Column(name = "sell_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@Column(name = "order_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private Long productId;
+	private Long buyId;
 
-    private ProductSize productSize;
+	private Long sellId;
 
-    private Long memberId;
+	private Integer tradePrice;
 
-    private Integer price;
-
-    private Status status;
 
 }

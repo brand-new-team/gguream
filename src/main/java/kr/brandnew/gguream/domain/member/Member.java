@@ -1,5 +1,6 @@
 package kr.brandnew.gguream.domain.member;
 
+import javax.persistence.Embedded;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,8 +27,14 @@ public class Member {
 
     private String phoneNumber;
 
+    @Embedded
+    private Favorites favorites = new Favorites();
+
+    @Embedded
+    private Wallet wallet;
+
     public static Member of(String nickname, String address, String phoneNumber) {
-        return new Member(null, nickname, address, phoneNumber);
+        return new Member(null, nickname, address, phoneNumber, new Favorites(), new Wallet());
     }
 
 }

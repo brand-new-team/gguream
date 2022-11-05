@@ -27,6 +27,6 @@ public class Buy extends BaseTimeEntity {
 
     private Integer price;
 
-
+    private Status status;
 
 }
