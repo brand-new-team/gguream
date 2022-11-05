@@ -1,13 +1,13 @@
 package kr.brandnew.gguream.domain.category;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -20,11 +20,5 @@ public class Category {
     private Long id;
 
     private String name;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Category parent;
-
-    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
-    private List<Category> childs = new ArrayList<>();
 
 }
