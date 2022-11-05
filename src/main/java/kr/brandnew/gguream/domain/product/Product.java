@@ -6,16 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,12 +23,15 @@ public class Product extends BaseTimeEntity {
 
     private String name;
     private String code;
+    private Integer releasePrice;
 
     @ElementCollection
     @CollectionTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id"))
-    private List<Long> categoryIds;
+    private List<Long> categoryIds = new ArrayList<>();
 
     @ElementCollection
     @CollectionTable(name = "product_image", joinColumns = @JoinColumn(name = "product_id"))
-    private List<String> urls;
+    private List<String> urls = new ArrayList<>();
+
+
 }
